@@ -3,9 +3,11 @@ package Controller;
 import Model.Classroom;
 import Model.Student;
 import Service.Class.ClassroomServiceIMPL;
+import Service.MyList;
 import Service.Student.IStudentService;
 import Service.Student.StudentServiceIMPL;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StudentController {
@@ -61,4 +63,25 @@ public class StudentController {
             StudentServiceIMPL.studentList.get(i).setId(i + 1);
         }
     }
+
+    public List<Student> searchStudentByName(String name) {
+        List<Student> nameSearch = new MyList<>();
+        for (Student student : StudentServiceIMPL.studentList) {
+            if (student.getName().equalsIgnoreCase(name)) {
+                nameSearch.add(student);
+            }
+        }
+        return nameSearch;
+    }
+
+    public List<Student> searchStudentByClassroom(int classroomId) {
+        List<Student> classroomSearch = new MyList<>();
+        for (Student student : StudentServiceIMPL.studentList) {
+            if (student.getClassroom().getId() == classroomId) {
+                classroomSearch.add(student);
+            }
+        }
+        return classroomSearch;
+    }
+
 }

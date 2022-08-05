@@ -31,4 +31,11 @@ public class ClassroomController {
             ClassroomServiceIMPL.classroomList.get(i).setId(i + 1);
         }
     }
+
+    public boolean contains(String name) {
+        for (Classroom classroom : classroomService.finAll()) {
+            if (classroom.getName().equals(name)) return true;
+        }
+        return false;
+    }
 }

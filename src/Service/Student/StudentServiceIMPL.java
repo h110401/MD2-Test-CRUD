@@ -3,13 +3,14 @@ package Service.Student;
 import Model.Classroom;
 import Model.Student;
 import Service.Class.ClassroomServiceIMPL;
+import Service.MyList;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentServiceIMPL implements IStudentService {
 
-    public static List<Student> studentList = new ArrayList<Student>() {
+    public static List<Student> studentList = (new ArrayList<Student>() {
         @Override
         public String toString() {
             String list = "Student List:\n";
@@ -20,7 +21,7 @@ public class StudentServiceIMPL implements IStudentService {
             list += "=================================================\n";
             return list;
         }
-    };
+    });
 
     static {
         studentList.add(new Student(1, "Hung", ClassroomServiceIMPL.classroomList.get(0)));
@@ -47,4 +48,5 @@ public class StudentServiceIMPL implements IStudentService {
     public void delete(int index) {
         studentList.remove(index);
     }
+
 }
